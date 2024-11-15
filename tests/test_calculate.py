@@ -2,6 +2,7 @@ import unittest
 from calculate import calc
 import math
 
+
 class TestCalculate(unittest.TestCase):
 
     def test_circle_area(self):
@@ -94,6 +95,7 @@ class TestCalculate(unittest.TestCase):
 
         with self.assertRaises(AssertionError):
             calc(fig, func, size)
+
 
 if __name__ == '__main__':
     unittest.main()
