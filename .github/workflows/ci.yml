@@ -1,0 +1,43 @@
+name: Tests Workflow
+
+on:
+  push:
+    branches:
+      - master
+      - release
+  pull_request:
+    branches:
+      - master
+      - release
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      FULL_NAME: "Насибуллина Алиса"
+      GROUP_NUMBER: "M3115"
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Print information
+        run: |
+          echo "ФИО: ${{ env.FULL_NAME }}"
+          echo "Номер группы: ${{ env.GROUP_NUMBER }}"
+          echo "Ник на Github: ${{ github.actor }}"
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.13
+
+      - name: Run unit tests
+        run: |
+          python -m unittest discover -s /home/runner/work/geometric_lib/geometric_lib/tests
+
+      - name: Lint code with flake8
+        run: |
+          pip install flake8
+          flake8 --ignore=F401 .
