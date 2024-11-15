@@ -2,7 +2,9 @@ import unittest
 from circle import area, perimeter
 import math
 
+
 class TestCircle(unittest.TestCase):
+
     def test_area(self):
         # Arrange (given)
         radius = 1
@@ -43,6 +45,6 @@ class TestCircle(unittest.TestCase):
         # Assert (then)
         self.assertEqual(result, 0)
 
+
 if __name__ == '__main__':
     unittest.main()
-    
